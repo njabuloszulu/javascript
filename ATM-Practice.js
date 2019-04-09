@@ -1,21 +1,24 @@
-var balance = 1000;
-var userInput = 12;
-function userBalance(withDrawal){
-    
-    if (balance >= withDrawal){
-        console.log(  "Your current balance is " + (balance - withDrawal))
-    }
-    else 
-    {
-     console.log("insuficiant funds")
-    }
+var balance = 0;
+var addedAmountHistory = [];
+const deposite = (addedAmount) => {
+    balance = getCurrentBalance() + addedAmount;
+    addedAmountHistory.push("Amount added " + addedAmount);
+    return "Available balance " + getCurrentBalance();
+};
+
+function getCurrentBalance() {
+    return balance;
 }
 
-function withDraw(){
-    balance - userInput
-        return "Withdrawed amount " + (userInput);
-    
-
+function giveUserBalance() {
+    return "Your balance is " + getCurrentBalance();
 };
-console.log(withDraw(balance, userInput));
-userBalance(userInput);
+console.log(deposite(100));
+console.log(deposite(1000));
+console.log(deposite(100));
+console.log(giveUserBalance());
+// console.log(balance);
+ console.log(addedAmountHistory);
+
+
+
