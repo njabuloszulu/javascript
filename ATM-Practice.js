@@ -1,24 +1,33 @@
 var balance = 0;
-var addedAmountHistory = [];
-const deposite = (addedAmount) => {
+var pastActivities = [];
+const deposit = (addedAmount) => {
     balance = getCurrentBalance() + addedAmount;
-    addedAmountHistory.push("Amount added " + addedAmount);
+    pastActivities.push("Amount added " + addedAmount);
     return "Available balance " + getCurrentBalance();
 };
-
-function getCurrentBalance() {
+const withdraw = (userAmount) => {
+    if(getCurrentBalance() >= userAmount){
+        pastActivities.push("withdrawal amount" + userAmount);
+        return userAmount;
+    }
+    else{
+        return "insufficient balance";
+    };
+};
+const getCurrentBalance = () => {
     return balance;
 }
 
-function giveUserBalance() {
+const giveUserBalance = () =>{
     return "Your balance is " + getCurrentBalance();
 };
-console.log(deposite(100));
-console.log(deposite(1000));
-console.log(deposite(100));
-console.log(giveUserBalance());
-// console.log(balance);
- console.log(addedAmountHistory);
+console.log(deposit(100));
+console.log(deposit(1000));
+console.log(withdraw(500))
+// console.log(deposit(100));
+// console.log(giveUserBalance());
+console.log(balance);
+console.log(pastActivities);
 
 
 
